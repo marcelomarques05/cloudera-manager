@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Build Image
-docker build . -t 'cm:1'
-
 # Stop/Delete All Existent Containers
 if [ `docker ps | grep -v CONTAINER | wc -l` != 0 ]; then
     docker stop `docker ps | grep -v CONTAINER | awk '{print $1}'`
@@ -13,6 +10,8 @@ if [ `docker images | grep -v REPOSITORY | wc -l` != 0 ]; then
     sleep 5
 fi
 
+# Build Image
+docker build . -t 'cm:1'
 docker image rm centos:6
 
 # Start Containers (Check MySQL Pass)
