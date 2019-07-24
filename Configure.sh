@@ -17,6 +17,7 @@ docker image rm centos:6
 # Start Containers (Check MySQL Pass)
 docker run -d -it -h cm01 --name cloudera-cm --rm -p 7180:7180 cm:1
 docker run -d -it -h db01 --name cloudera-db --rm -e MYSQL_ROOT_PASSWORD=passw0rd mysql:latest --default-authentication-plugin=mysql_native_password
+sleep 10
 
 # SSH/Hosts Conf
 docker exec cloudera-cm bash -c "/etc/init.d/sshd start"
